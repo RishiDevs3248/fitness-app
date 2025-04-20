@@ -1,7 +1,5 @@
 const connection = require("./Database/DB-Connection")
 const cookieparser = require("cookie-parser")
-// const router = require("./routes/teachers") 
-// const studentsRouter = require("./routes/Students");
 var cors = require('cors')
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
@@ -31,7 +29,7 @@ function CreateJwtToken(email){
 app.post("/register",async (req, res) => {
     try {
         const { email, password } = req.body;
-        const Student = await studentModel.findOne({ email });
+        const Student = await studentModel.findOne({ email }); 
         if (Student) {
             return res.json({ "msg": `email (${email}) already in use ` });
         }
